@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- TEMPLATE: copy this file to start a new page. "noindex" keeps this template out of Google. Remove that line on real pages. -->
+<meta name="robots" content="noindex">
+<title>Page title | Zuper Soda</title>
+<meta name="description" content="One sentence about this page.">
+<meta name="theme-color" content="#141418">
+<meta name="color-scheme" content="dark">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ===== MENU BAR (same on every page) ===== -->
+<header class="nav" id="nav">
+  <div class="gut"><div class="max row">
+    <a class="logo" href="/" aria-label="Zuper Soda home"><img src="/assets/logo.svg" alt="Zuper Soda" width="1184" height="544"></a>
+    <div class="nav-r">
+      <nav class="nav-links" aria-label="Main">
+        <a href="/#approach">Approach</a>
+        <a href="/#offer">Services</a>
+        <a href="/portfolio/">Work</a>
+        <a href="/resources/">Resources</a>
+        <a href="/blog/">Blog</a>
+      </nav>
+      <button class="btn sm" type="button" data-open>Enquire now</button>
+      <button class="menu-btn" type="button" aria-expanded="false">Menu</button>
+    </div>
+  </div></div>
+</header>
+
+<main id="main">
+  <!-- ===== PAGE OPENING: change the label, headline and line ===== -->
+  <section class="page-hero">
+    <div class="gut"><div class="max">
+      <div class="label"><i></i>Section label</div>
+      <h1>A short, clear headline for this page.</h1>
+      <p>One or two lines that say what visitors will find here.</p>
+    </div></div>
+  </section>
+
+  <!-- ===== CARD GRID: for projects, guides or articles ===== -->
+  <section class="blk">
+    <div class="gut"><div class="max">
+      <div class="blk-head">
+        <div><div class="label"><i></i>Label</div><h2>Section headline.</h2></div>
+        <p>A short line under the headline.</p>
+      </div>
+      <div class="cards">
+        <a class="card" href="#"><span class="tag">Tag</span><h3>Card title</h3><p>One line about this item.</p><span class="more">Read more →</span></a>
+        <a class="card" href="#"><span class="tag">Tag</span><h3>Card title</h3><p>One line about this item.</p><span class="more">Read more →</span></a>
+        <a class="card" href="#"><span class="tag">Tag</span><h3>Card title</h3><p>One line about this item.</p><span class="more">Read more →</span></a>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- ===== LONG TEXT: for case studies and blog articles ===== -->
+  <section class="blk soft">
+    <div class="gut"><div class="max">
+      <div class="prose">
+        <h2>A heading inside an article</h2>
+        <p>Body text for case studies and blog posts. Lines are kept short so they're easy to read.</p>
+        <blockquote>A quote or key point stands out like this.</blockquote>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- ===== CLOSING BAND + FOOTER (same on every page) ===== -->
+  <section class="close" id="contact">
+    <div class="gut"><div class="max">
+      <div class="close-top">
+        <div><div class="label"><i></i>Work with us</div><h2>Ready to find where your profit is leaking?</h2></div>
+        <div class="close-r">
+          <p>Tell us about your business. We'll reply within one working day to arrange a short, no-obligation call.</p>
+          <button class="btn pink" type="button" data-open>Enquire now <span class="arr">→</span></button>
+        </div>
+      </div>
+      <div class="foot"><a class="logo" href="/" aria-label="Zuper Soda home"><img src="/assets/logo.svg" alt="" width="1184" height="544"></a><span>Serving businesses in the US, UK and Australia · © 2026 Zuper Soda</span></div>
+    </div></div>
+  </section>
+</main>
+
+<!-- ===== ENQUIRY PANEL (same on every page) ===== -->
+<dialog id="enquire" aria-labelledby="enqTitle">
+  <div class="panel">
+    <button class="x" type="button" data-close aria-label="Close">×</button>
+    <div id="formView">
+      <div class="label"><i></i>Enquire</div>
+      <h3 id="enqTitle">Start a conversation</h3>
+      <p class="intro">A few details help us prepare. It takes under a minute.</p>
+      <form name="enquiry" method="POST" id="enqForm" novalidate>
+        <input type="hidden" name="form-name" value="enquiry">
+        <p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+        <div class="two">
+          <div class="field"><label for="f-name">Full name</label><input id="f-name" name="name" autocomplete="name" required></div>
+          <div class="field"><label for="f-email">Work email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+        </div>
+        <div class="two">
+          <div class="field"><label for="f-site">Company website</label><input id="f-site" name="website" autocomplete="url" placeholder="company.com"></div>
+          <div class="field"><label for="f-size">Team size</label>
+            <select id="f-size" name="team_size">
+              <option value="">Select</option><option>1–10</option><option>11–50</option><option>51–200</option><option>200+</option>
+            </select>
+          </div>
+        </div>
+        <div class="field"><label for="f-problem">What's your biggest growth challenge right now?</label><textarea id="f-problem" name="challenge" required placeholder="For example: we get traffic but few qualified enquiries."></textarea></div>
+        <div class="field"><label for="f-when">Ideal start <small>(optional)</small></label>
+          <select id="f-when" name="start"><option value="">Select</option><option>As soon as possible</option><option>Within a month</option><option>In 2–3 months</option><option>Just exploring</option></select>
+        </div>
+        <p class="err" id="err" role="alert"></p>
+        <button class="btn" type="submit" id="send">Send enquiry <span class="arr">→</span></button>
+        <p class="privacy">We only use your details to reply to this enquiry.</p>
+      </form>
+    </div>
+    <div id="doneView" class="done" hidden>
+      <div class="tick" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M5 12.5 L10 17 L19 7" stroke="#1E1E24" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <h3>Thank you. We've got it.</h3>
+      <p class="intro">We'll reply by email within one working day to arrange a call.</p>
+      <div><button class="btn line" type="button" data-close>Close</button></div>
+    </div>
+  </div>
+</dialog>
+
+<script src="/assets/site.js"></script>
+</body>
+</html>
