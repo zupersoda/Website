@@ -23,7 +23,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
 <style>
 /* Layout: a sticky opening where scattered points settle, sort into three groups, then form one rising line;
-   then a quiet six-step approach, a three-part offer, and a charcoal closing band with the enquiry panel. */
+   then an eight-step "how we work" journey, a three-part offer, and a charcoal closing band with the enquiry panel. */
 :root{
   --bg:#141418; --soft:#1B1B21; --ink:#F4F4F6; --muted:#A3A3AE; --faint:#5E5E69; --line:#2A2A31;
   --pink:#F5407A; --pink-text:#FF7AA5; --band:#0D0D10; --band-ink:#FFFFFF; --band-muted:#A6A6B0; --btn:#F4F4F6; --btn-ink:#1E1E24;
@@ -99,15 +99,27 @@ section.blk{padding-block:120px}
 .blk-head p{color:var(--muted);margin:0;max-width:46ch;font-size:17px}
 @media (max-width:860px){section.blk{padding-block:80px}.blk-head{grid-template-columns:1fr;gap:16px;margin-bottom:40px}}
 
-.approach{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));border-top:1px solid var(--line)}
-.approach li{padding:28px 24px 0 0;position:relative}
-.approach li::before{content:"";position:absolute;top:-1px;left:0;width:0;height:2px;background:var(--pink);transition:width .6s}
-.approach li:hover::before{width:40px}
-.approach .n{font:600 12px var(--head);letter-spacing:.14em;color:var(--pink-text)}
-.approach b{display:block;font:700 18px/1.2 var(--head);letter-spacing:-.01em;margin:14px 0 8px}
-.approach span{color:var(--muted);font-size:14.5px;line-height:1.55;display:block}
-@media (max-width:1000px){.approach{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:40px}}
-@media (max-width:560px){.approach{grid-template-columns:1fr;row-gap:0}.approach li{padding:22px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:44px 1fr}.approach b{margin:0 0 4px}.approach li>div{grid-column:2}}
+.approach{list-style:none;margin:0 auto;padding:0;max-width:860px;display:flex;flex-direction:column;align-items:stretch}
+.approach li{position:relative;display:grid;grid-template-columns:56px minmax(0,1fr);align-items:start;gap:0 8px;padding:22px 28px;border:1px solid var(--line);border-radius:14px;background:var(--soft);transition:border-color .3s}
+.approach li:hover{border-color:#3A3A44}
+.approach li:not(:last-child){margin-bottom:56px}
+.approach li:not(:last-child)::after{content:"";position:absolute;left:50%;bottom:-46px;width:2px;height:26px;margin-left:-1px;background:var(--pink)}
+.approach li:not(:last-child)::before{content:"";position:absolute;left:50%;bottom:-48px;width:10px;height:10px;margin-left:-6px;border-right:2px solid var(--pink);border-bottom:2px solid var(--pink);transform:rotate(45deg)}
+.approach .n{font:700 14px/1 var(--head);letter-spacing:.08em;color:var(--pink-text);width:40px;height:40px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;background:var(--bg)}
+.approach b{display:block;font:700 19px/1.25 var(--head);letter-spacing:-.01em;margin:8px 0 6px}
+.approach div>span{color:var(--muted);font-size:15px;line-height:1.6;display:block;text-wrap:pretty}
+.approach li>div>span{max-width:60ch}
+.approach .lnk{background:none;border:0;padding:0;font:inherit;color:var(--pink-text);text-decoration:underline;text-underline-offset:3px;cursor:pointer;display:inline}
+.approach li.win{border-color:var(--pink);background:linear-gradient(135deg,rgba(245,64,122,.14),var(--soft) 70%)}
+.approach li.win .n{background:var(--pink);color:#1E1E24;border-color:var(--pink)}
+.approach li.win b{color:var(--ink)}
+@media (max-width:560px){.approach li{grid-template-columns:48px minmax(0,1fr);padding:18px 18px}.approach li:not(:last-child){margin-bottom:48px}.approach li:not(:last-child)::after{bottom:-40px;height:22px}.approach li:not(:last-child)::before{bottom:-42px}.approach b{font-size:17px;margin-top:9px}}
+.method{margin:64px auto 0;max-width:860px;justify-content:center;padding:24px 28px;border:1px solid var(--line);border-radius:14px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;color:var(--muted);font-size:15px}
+.method strong{font:600 12px var(--head);letter-spacing:.16em;text-transform:uppercase;color:var(--ink);margin-right:6px}
+.method em{font-style:normal;color:var(--ink);font-weight:600;white-space:nowrap}
+.method i{margin-left:12px}
+.method i{color:var(--pink);font-style:normal}
+.engage{margin:20px auto 0;max-width:860px;text-align:center;color:var(--muted);font-size:15px}
 
 .offer{background:var(--soft)}
 .three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
@@ -138,7 +150,14 @@ section.blk{padding-block:120px}
 @media (max-width:860px){.promise .max{padding-block:84px}}
 
 /* instagram */
-.ig{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;min-height:120px}
+.ig{--ig-gap:14px;--ig-n:3;display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - (var(--ig-n) - 1)*var(--ig-gap))/var(--ig-n));gap:var(--ig-gap);min-height:120px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-x:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.ig::-webkit-scrollbar{display:none}
+.ig-card{scroll-snap-align:start}
+.ig-nav{display:flex;gap:10px;margin-left:auto}
+.ig-nav button{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--ink);font:600 18px/1 var(--body,Inter),sans-serif;cursor:pointer;display:grid;place-items:center;transition:border-color .2s,background .2s,opacity .2s}
+.ig-nav button:hover:not(:disabled){border-color:var(--pink);background:rgba(245,64,122,.08)}
+.ig-nav button:disabled{opacity:.35;cursor:default}
+.ig-nav svg{width:18px;height:18px}
 .ig-card{position:relative;display:block;aspect-ratio:1;border-radius:12px;overflow:hidden;background:var(--soft);color:#fff;text-decoration:none}
 .ig-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
 .ig-card:hover img,.ig-card:focus-visible img{transform:scale(1.05)}
@@ -150,7 +169,8 @@ section.blk{padding-block:120px}
 @media (hover:hover){.ig-card .cap{opacity:0;transition:opacity .25s}.ig-card:hover .cap,.ig-card:focus-visible .cap{opacity:1}}
 .ig-foot{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
 .ig-foot span{color:var(--muted);font-size:15px}
-@media (max-width:760px){.ig{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}
+@media (max-width:760px){.ig{--ig-n:2.2;--ig-gap:10px}}
+@media (max-width:480px){.ig{--ig-n:1.25}}
 @media (max-width:860px){.three{grid-template-columns:1fr}}
 
 /* closing */
@@ -205,7 +225,7 @@ textarea{resize:vertical;min-height:110px}
   <div class="gut"><div class="max row">
     <a class="logo" href="#" aria-label="Zuper Soda home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1184 544" aria-hidden="true" focusable="false"><use href="#zs-logo"/></svg></a>
     <div class="nav-r">
-      <a href="#approach">Approach</a>
+      <a href="#approach">How we work</a>
       <a href="#offer">Services</a>
       <button class="btn sm" type="button" data-open>Enquire now</button>
     </div>
@@ -253,17 +273,21 @@ textarea{resize:vertical;min-height:110px}
   <section class="blk" id="approach">
     <div class="gut"><div class="max">
       <div class="blk-head">
-        <div><div class="label"><i></i>Approach</div><h2>Six steps from first call to steady growth.</h2></div>
-        <p>Every engagement starts with a baseline of where you are today, so progress is measured, not guessed.</p>
+        <div><div class="label"><i></i>How we work</div><h2>From first chat to time for cheers.</h2></div>
+        <p>Here's what working with Zuper Soda looks like, step by step. We take on only a handful of clients each month.</p>
       </div>
       <ol class="approach">
-        <li><span class="n">01</span><div><b>Understand</b><span>Your business, customers and goals.</span></div></li>
-        <li><span class="n">02</span><div><b>Diagnose</b><span>Where sales are won and where they leak.</span></div></li>
-        <li><span class="n">03</span><div><b>Strategise</b><span>One plan across marketing, operations and sales.</span></div></li>
-        <li><span class="n">04</span><div><b>Guide</b><span>Your team executes, with us alongside.</span></div></li>
-        <li><span class="n">05</span><div><b>Measure</b><span>Dashboards track results against the baseline.</span></div></li>
-        <li><span class="n">06</span><div><b>Improve</b><span>Keep what works. Fix what doesn't.</span></div></li>
+        <li><span class="n">01</span><div><b>You find Zuper Soda</b><span>You know things could be better. Profits aren't where they should be, and it's time to figure out why. You reach out or fill in our <button class="lnk" type="button" data-open>enquiry form</button>.</span></div></li>
+        <li><span class="n">02</span><div><b>We get in touch</b><span>We have a chat to understand your business and see if we're a good fit. We also talk about our next available slot.</span></div></li>
+        <li><span class="n">03</span><div><b>Welcome to the Zuper Soda family!</b><span>You're onboarded, and just like that, we're a team. We're the people you can brainstorm with, run ideas by and count on.</span></div></li>
+        <li><span class="n">04</span><div><b>We dig in</b><span>We study your business, customers, competitors and numbers. We find what's working, what isn't, and where the money is.</span></div></li>
+        <li><span class="n">05</span><div><b>We set SMART goals</b><span>Together, we look at your priorities and agree on what we're working towards.</span></div></li>
+        <li><span class="n">06</span><div><b>Your dashboard is ready</b><span>We build a custom dashboard so everyone stays on the same page and can see the progress.</span></div></li>
+        <li><span class="n">07</span><div><b>Slowly, steadily, we get there</b><span>Some goals happen sooner, others take time. We keep tracking results and making changes along the way.</span></div></li>
+        <li class="win"><span class="n">08</span><div><b>Goal achieved. Time for cheers! 🥂</b><span>We celebrate the wins together. And then, there's always something new to work towards.</span></div></li>
       </ol>
+      <p class="method"><strong>Our method</strong><em>Understand <i>→</i></em><em>Diagnose <i>→</i></em><em>Strategise <i>→</i></em><em>Guide <i>→</i></em><em>Measure <i>→</i></em><em>Improve</em></p>
+      <p class="engage">We work through custom projects and monthly retainers.</p>
     </div></div>
   </section>
 
@@ -312,8 +336,9 @@ textarea{resize:vertical;min-height:110px}
         <div><div class="label"><i></i>Instagram</div><h2>Marketing lessons, a new one every day.</h2></div>
         <p>Real marketing strategy for business owners, straight from our feed. Prefer to talk? DM “GROW” on Instagram and we'll chat.</p>
       </div>
-      <div class="ig" id="igGrid" aria-live="polite"></div>
-      <div class="ig-foot"><a class="btn line" href="https://www.instagram.com/zupersoda/" target="_blank" rel="noopener">Follow @zupersoda <span class="arr">→</span></a></div>
+      <div class="ig" id="igGrid" aria-live="polite" tabindex="0" aria-label="Instagram posts, swipe to see more"></div>
+      <div class="ig-foot"><a class="btn line" href="https://www.instagram.com/zupersoda/" target="_blank" rel="noopener">Follow @zupersoda <span class="arr">→</span></a>
+        <div class="ig-nav" aria-label="Scroll Instagram posts"><button type="button" id="igPrev" aria-label="Previous posts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button><button type="button" id="igNext" aria-label="Next posts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
     </div></div>
   </section>
 
@@ -512,7 +537,7 @@ textarea{resize:vertical;min-height:110px}
   requestAnimationFrame(draw);
 
   // Instagram: paste your Behold feed URL below to show your latest posts live.
-  // Until then, the six recent posts saved here are shown.
+  // Until then, the six recent posts saved here are shown. Shows 3 at a time; swipe or use the arrows for more (up to 12).
   const IG_FEED_URL = '';
   const IG_FALLBACK = [{"link": "https://www.instagram.com/p/Df7RgE6lVD_/", "img": "https://hop.behold.pictures/eyJ1IjoiY2JhQTFzeTFPMVc4c1hkRUtVa3JJVVVOMHY2MiIsImYiOiJNMkcyWU14UDl6YjdpbXExZGJGYSIsInAiOiIxODA5Mjg4ODUzNDUwOTYyMCIsImgiOiJqMWdkMXYifQ.jpg?class=squareMedium", "cap": "Thinking of changing your logo, sign or menu? Read this first.", "type": "CAROUSEL_ALBUM"}, {"link": "https://www.instagram.com/p/Df2KLplj_iw/", "img": "https://hop.behold.pictures/eyJ1IjoiY2JhQTFzeTFPMVc4c1hkRUtVa3JJVVVOMHY2MiIsImYiOiJNMkcyWU14UDl6YjdpbXExZGJGYSIsInAiOiIxODE0NTY4ODI3MjYxNjc5MyIsImgiOiIxYmE3dnMyIn0.jpg?class=squareMedium", "cap": "Want more customers to pick you on Google? Reply to every review.", "type": "CAROUSEL_ALBUM"}, {"link": "https://www.instagram.com/reel/Dfz2xbeAKeq/", "img": "https://hop.behold.pictures/eyJ1IjoiY2JhQTFzeTFPMVc4c1hkRUtVa3JJVVVOMHY2MiIsImYiOiJNMkcyWU14UDl6YjdpbXExZGJGYSIsInAiOiIxODEwMzQwMzM0MjQyMjI5MCIsImgiOiIxZHgwNGpqIn0.jpg?class=squareMedium", "cap": "Want your customers to share your business for free? 🎧", "type": "VIDEO"}, {"link": "https://www.instagram.com/reel/DfzjDsGgqye/", "img": "https://hop.behold.pictures/eyJ1IjoiY2JhQTFzeTFPMVc4c1hkRUtVa3JJVVVOMHY2MiIsImYiOiJNMkcyWU14UDl6YjdpbXExZGJGYSIsInAiOiIxODExMzc3ODk3NDIzNTY1NiIsImgiOiIyeHJqZmMifQ.jpg?class=squareMedium", "cap": "What should business owners do when something goes wrong? 🍗", "type": "VIDEO"}, {"link": "https://www.instagram.com/p/Dfxa5CeG4y8/", "img": "https://hop.behold.pictures/eyJ1IjoiY2JhQTFzeTFPMVc4c1hkRUtVa3JJVVVOMHY2MiIsImYiOiJNMkcyWU14UDl6YjdpbXExZGJGYSIsInAiOiIxNzk1NzMzMTk5NjAzODU4NiIsImgiOiJ5OGVkbWQifQ.jpg?class=squareMedium", "cap": "What would you do for your business if you weren't afraid? 💭", "type": "IMAGE"}, {"link": "https://www.instagram.com/p/Dfu1C02mycJ/", "img": "https://hop.behold.pictures/eyJ1IjoiY2JhQTFzeTFPMVc4c1hkRUtVa3JJVVVOMHY2MiIsImYiOiJNMkcyWU14UDl6YjdpbXExZGJGYSIsInAiOiIxODM0NjQ2Mjk2NjI1Nzk1MyIsImgiOiI5YTluMjgifQ.jpg?class=squareMedium", "cap": "26 villagers. Zero pub experience. One pub saved. 🍻", "type": "CAROUSEL_ALBUM"}];
   (async () => {
@@ -529,7 +554,7 @@ textarea{resize:vertical;min-height:110px}
         }));
       } catch (e) { /* keep saved posts */ }
     }
-    posts.slice(0,6).forEach(q => {
+    posts.slice(0,12).forEach(q => {
       const a = document.createElement('a'); a.className = 'ig-card'; a.href = q.link; a.target = '_blank'; a.rel = 'noopener';
       a.setAttribute('aria-label', 'Instagram post: ' + (q.cap || 'view post'));
       const im = document.createElement('img'); im.src = q.img; im.alt = q.cap || 'Instagram post'; im.loading = 'lazy'; im.decoding = 'async'; im.addEventListener('error', () => a.classList.add('noimg')); a.appendChild(im);
@@ -537,6 +562,12 @@ textarea{resize:vertical;min-height:110px}
       if (q.cap){ const c = document.createElement('span'); c.className = 'cap'; c.textContent = q.cap; a.appendChild(c); }
       grid.appendChild(a);
     });
+    const prev = document.getElementById('igPrev'), next = document.getElementById('igNext');
+    const step = () => { const c = grid.querySelector('.ig-card'); if (!c) return grid.clientWidth; const gap = parseFloat(getComputedStyle(grid).columnGap) || 0; return Math.max(c.offsetWidth + gap, Math.floor((grid.clientWidth + gap + 2) / (c.offsetWidth + gap)) * (c.offsetWidth + gap)); };
+    const update = () => { const max = grid.scrollWidth - grid.clientWidth - 2; prev.disabled = grid.scrollLeft <= 2; next.disabled = grid.scrollLeft >= max; prev.parentElement.hidden = max <= 0; };
+    prev.addEventListener('click', () => grid.scrollBy({ left: -step(), behavior: 'smooth' }));
+    next.addEventListener('click', () => grid.scrollBy({ left: step(), behavior: 'smooth' }));
+    grid.addEventListener('scroll', update, { passive: true }); window.addEventListener('resize', update); update();
   })();
 
   // Enquiry panel
@@ -576,5 +607,5 @@ textarea{resize:vertical;min-height:110px}
 </script>
 </body>
 </html>
-<!-- GitHub deployment test -->
+
 
