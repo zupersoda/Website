@@ -50,7 +50,12 @@ export async function onRequestPost({ request, env }) {
     const out = await res.json().catch(() => ({}));
     if (res.status === 400 && out.code === 'duplicate_parameter') return json({ success: true }, 200, cors);
 
-    return json({ success: false, message: out.message || ('Error ' + res.status) }, 502, cors);
+    // Cloudflare's edge replaces 502/504/52x responses with its own generic
+    // error page before they reach the browser, hiding whatever body we send.
+    // Use a plain 400 instead so the real Brevo error message actually gets
+    // through to the signup form.
+    console.error('Brevo rejected contact add:', res.status, JSON.stringify(out));
+    return json({ success: false, message: out.message || ('Brevo error ' + res.status) }, 400, cors);
   } catch (err) {
     return json({ success: false, message: 'Something went wrong. Please try again.' }, 500, cors);
   }
